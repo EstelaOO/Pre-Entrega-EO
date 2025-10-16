@@ -1,0 +1,37 @@
+-bootstrap
+npm install bootstrap react-bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+npm install react-router-dom
+
+
+import 'font-awesome/css/font-awesome.min.css';
+...............
+npm install font-awesome:
+npm install @fortawesome/free-solid-svg-icons
+
+cd PF-25235-EO
+
+---------------------git
+cd NodeJS
+git status
+git add .
+git commit -m "nueva actualización"
+git push
+
+
+----------
+git config --global user.name "Tu Nombre"
+git config --global user.email "tuemail@ejemplo.com"
+git init: Inicializa un nuevo repositorio en la carpeta actual. Esto crea un .git, que es la carpeta donde se guardan todos los cambios que vas a realizar. git init
+git add .: Este comando selecciona los archivos que querés "guardar". Podés agregar archivos específicos o todo de una, con: git add .
+git commit -m "nueva actualización" : Crea un "snapshot" de los archivos agregados y guarda un mensaje descriptivo de los cambios.git commit -m "Mensaje descriptivo de los cambios"
+git remote add origin https://github.com/EstelaOO/CursoReact.git : para vincular al repositorio
+git push -u origin master : envia al repositorio que acabamos de crear
+
+-----------
+git checkout -b TalentoTach:    Creación de la rama: Usá el comando "git checkout -b TalentoTach" para crear y cambiarte a la nueva rama al mismo tiempo.
+git branch:     Verificar la rama actual: Ejecutá git branch para verificar que estés en la rama correcta antes de hacer cambios.
+git add . :     usar "git add ." selecciona todo los archivos que querés "guardar".
+git commit -m "Descripción de los cambios" :    para registrar los nuevos cambios.
+git push:   Subir la nueva rama a GitHub: Usá "git push origin nombre-de-la-rama" para subir tu nueva rama al repositorio remoto.
