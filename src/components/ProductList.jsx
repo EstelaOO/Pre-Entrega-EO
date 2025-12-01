@@ -64,6 +64,7 @@ const ProductList = ({ category = null }) =>
   
   return (
     <>
+  {/* --- */}
       <Form className="mb-4">
         <Row className="align-items-end">
           <Col md={3}>
@@ -96,7 +97,7 @@ const ProductList = ({ category = null }) =>
           </Col>
         </Row>
       </Form>
-
+{/* --- */}
       <Row>
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => (

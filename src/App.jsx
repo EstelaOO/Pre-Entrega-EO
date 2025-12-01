@@ -5,20 +5,26 @@ import Ofertas from './components/Ofertas';
 import Infaltables from './components/Infaltables';
 import Login from './components/Login'; 
 import Footer from './components/Footer'
-
+import { CartProvider } from './components/CartContext';
+import Carrito from './components/Carrito'; 
+import CrudProductos from './components/CrudProductos';
 function App() {
 
   return (
-     <Router>
-      <Header />
-      <Routes>
-        <Route path="/administracion" element={<Login />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/ofertas" element={<Ofertas />} />
-        <Route path="/infaltables" element={<Infaltables />} />
-      </Routes>
-      <Footer/>
-    </Router>
+    <CartProvider>
+         <Router>
+          <Header />
+          <Routes>
+            <Route path="/administracion" element={<Login />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/ofertas" element={<Ofertas />} />
+            <Route path="/infaltables" element={<Infaltables />} />
+            <Route path="/carrito" element={<Carrito />} />
+            <Route path="/crud" element={<CrudProductos />} />
+          </Routes>
+          <Footer/>
+        </Router>
+        </CartProvider>
   )
 }
 
