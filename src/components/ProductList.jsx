@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React, { useEffect, useState, useContext } from 'react';
+import { Row, Col ,Form,Button} from 'react-bootstrap';
 import ProductCard from './ProductCard';
+import { CartContext } from './CartContext';
 
 const ProductList = ({ category = null }) => 
     {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+  const { agregarAlCarrito } = useContext(CartContext);
 
 
     useEffect(() => 
@@ -28,12 +33,29 @@ const ProductList = ({ category = null }) =>
       });
   }, [category]);
 
+  const handleFilter = () => {
+    let filtered = products;
 
-    const handleAgregarAlCarrito = (product) => {
-    alert(`Producto ${product.title} agregado al carrito`);
+    if (minPrice !== '') {
+      filtered = filtered.filter((p) => p.price >= parseFloat(minPrice));
+    }
+
+    if (maxPrice !== '') {
+      filtered = filtered.filter((p) => p.price <= parseFloat(maxPrice));
+    }
+
+    setFilteredProducts(filtered);
+  };
+  
+// Botón para limpiar filtros
+  const handleClear = () => {
+    setMinPrice('');
+    setMaxPrice('');
+    setFilteredProducts(products);
   };
 
-
+//antes
+//  const handleAgregarAlCarrito = (product) => {alert(`Producto ${product.title} agregado al carrito`);};
 
   if (loading) {
     return <div>Loading...</div>;
@@ -41,13 +63,52 @@ const ProductList = ({ category = null }) =>
 
   
   return (
-    <Row>
-      {products.map((product) => (
-        <Col md={4} key={product.id} className="mb-4">
-          <ProductCard product={product} agregarAlCarrito={handleAgregarAlCarrito} />
-        </Col>
-      ))}
-    </Row>
+    <>
+      <Form className="mb-4">
+        <Row className="align-items-end">
+          <Col md={3}>
+            <Form.Label>Minimo </Form.Label>
+            <Form.Control
+              type="number"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+              placeholder="Ej: 10"
+            />
+          </Col>
+          <Col md={3}>
+            <Form.Label>Maximo</Form.Label>
+            <Form.Control
+              type="number"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
+          
+            />
+          </Col>
+          <Col md="auto">
+            <Button variant="primary" onClick={handleFilter}>
+              Filtrar
+            </Button>
+          </Col>
+          <Col md="auto">
+            <Button variant="secondary" onClick={handleClear}>
+              Limpiar
+            </Button>
+          </Col>
+        </Row>
+      </Form>
+
+      <Row>
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((product) => (
+            <Col md={4} key={product.id} className="mb-4">
+              <ProductCard product={product} agregarAlCarrito={agregarAlCarrito} />
+            </Col>
+          ))
+        ) : (
+          <div>No hay productos en este rango de precios.</div>
+        )}
+      </Row>
+       </>
   );
 };
 
