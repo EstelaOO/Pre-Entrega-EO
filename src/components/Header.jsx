@@ -3,21 +3,17 @@ import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
-import { faHouse } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
       <Container>       
         <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
-          <img 
-            src="https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/1.webp" 
-            alt="Logo" 
+          <img
+            src="https://via.placeholder.com/40" 
+            alt="Logo"
             className="d-inline-block align-top me-2"
-            style={{ width: '50px', height: '50px' }}
           />
-          {/* <FontAwesomeIcon icon={faHouse} size="lg" /> */}
-          
           <span>Tienda On-line</span>
         </Navbar.Brand>
 

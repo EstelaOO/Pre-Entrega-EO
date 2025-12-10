@@ -5,7 +5,7 @@ const Infaltables = () => {
   return (
     <div className="container">
       <h1>Infaltables</h1>
-      <ProductList category="furniture" />
+      <ProductList category="jewelery" />
     </div>
   );
 };
