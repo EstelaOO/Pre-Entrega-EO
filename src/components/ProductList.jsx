@@ -10,6 +10,9 @@ const ProductList = ({ category = null }) =>
   const [loading, setLoading] = useState(true);
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+  //const [minPrice, setMinPrice] = useState(0);       // valor inicial mínimo
+  //const [maxPrice, setMaxPrice] = useState(10000);   // valor inicial máximo
+
   const { agregarAlCarrito } = useContext(CartContext);
 
 
@@ -25,6 +28,7 @@ const ProductList = ({ category = null }) =>
       .then((response) => response.json())
       .then((data) => {
         setProducts(data.products);
+        setFilteredProducts(data.products); // ← Muestra todos los productos al inicio
         setLoading(false);
       })
       .catch((error) => {
@@ -73,7 +77,7 @@ const ProductList = ({ category = null }) =>
               type="number"
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
-              placeholder="Ej: 10"
+              placeholder="Ejemplo: 10"
             />
           </Col>
           <Col md={3}>
@@ -82,6 +86,7 @@ const ProductList = ({ category = null }) =>
               type="number"
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
+              placeholder="Ejemplo: 1000"
           
             />
           </Col>
@@ -109,7 +114,7 @@ const ProductList = ({ category = null }) =>
           <div>No hay productos en este rango de precios.</div>
         )}
       </Row>
-       </>
+      </>
   );
 };
 
