@@ -23,14 +23,14 @@ const Login = () => {
           <Card className="shadow-lg p-4">
             <Card.Body>
               <h2 className="text-center mb-4">Iniciar Sesión</h2>
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={handleSubmit} >
                 <Form.Group className="mb-3">
                   <Form.Label>Usuario</Form.Label>
-                  <Form.Control type="text" value={user} onChange={e => setUser(e.target.value)} required />
+                  <Form.Control type="text" value={user} placeholder="admin" onChange={e => setUser(e.target.value)} required />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Contraseña</Form.Label>
-                  <Form.Control type="password" value={pass} onChange={e => setPass(e.target.value)} required />
+                  <Form.Control type="password" value={pass} placeholder="****" onChange={e => setPass(e.target.value)} required />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="w-100">
                   Ingresar
